@@ -107,13 +107,24 @@ const Modal = ({ modalActive, closeModal, imageParams }) => {
         <Image src={imageParams.download_url} />
         <Typography>Author: {imageParams.author}</Typography>
         <ButtomBox>
-          <Button
-            color="primary"
-            size="medium"
-            onClick={() => addFavoriteProduct(imageParams)}
-          >
-            Add to Favorites
-          </Button>
+          {favoriteProduct ? (
+            <Button
+              color="primary"
+              size="medium"
+              onClick={() => addFavoriteProduct(imageParams)}
+            >
+              Remove
+            </Button>
+          ) : (
+            <Button
+              color="primary"
+              size="medium"
+              onClick={() => addFavoriteProduct(imageParams)}
+            >
+              Add to Favorites
+            </Button>
+          )}
+
           <Button color="primary" size="medium" onClick={() => closeModal()}>
             Close
           </Button>

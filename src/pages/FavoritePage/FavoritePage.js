@@ -1,20 +1,19 @@
 import styled from "styled-components";
 import { useSelector } from "react-redux";
 import { List } from "../../components";
+import { ImageCard } from "../../components";
 
 const Container = styled.div`
   max-width: 1500px;
   padding: 30px 15px;
   margin: 0 auto;
+  text-align: center;
 `;
 
 const Typography = styled.p`
   font-size: 20px;
   font-weight: bold;
-`;
-
-const Image = styled.img`
-  cursor: pointer;
+  color: #000;
 `;
 
 const FavoritePage = () => {
@@ -33,13 +32,11 @@ const FavoritePage = () => {
       <Container>
         <List>
           {state.map((image) => (
-            <li className="imageslist__item" key={image.id}>
-              <Image
-                className="imageslist__image"
-                src={image.download_url}
-                alt={image.download_url}
-              />
-            </li>
+            <ImageCard
+              image={image}
+              openModal={() => console.log("click")}
+              key={image.id}
+            />
           ))}
         </List>
       </Container>

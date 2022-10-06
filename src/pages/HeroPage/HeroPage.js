@@ -8,8 +8,8 @@ const Container = styled.div`
   height: 100vh;
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding: 50px 15px 80px 15px;
+  align-items: start;
+  padding: 30px 15px 30px 15px;
   overflow: hidden;
   position: relative;
 `;

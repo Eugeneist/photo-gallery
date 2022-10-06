@@ -4,15 +4,42 @@ import styled from "styled-components";
 import { Button } from "../Button";
 import { Modal } from "../Modal";
 import { List } from "../List";
+import { ImageCard } from "../ImageCard";
 
 const Container = styled.div`
   margin: 0 auto;
   text-align: center;
+  background: #d7c9c6;
 `;
 
-const Image = styled.img`
-  cursor: pointer;
-`;
+// const Image = styled.img`
+//   cursor: pointer;
+// `;
+
+// const ImageCard = styled.li`
+//   position: relative;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   flex-direction: column;
+//   margin: 0;
+//   padding: 0;
+// `;
+
+// const FavoriteButton = styled.input`
+// position: absolute;
+// top: 7px;
+// right: 55px;
+// color: #fca311;
+// zIndex: 9;
+// border: 1px solid transparent;
+// &:hover: {
+//   color: "#E01F0D",
+//   fill: "#E01F0D",
+//   opacity: [0.9, 0.8, 0.7],
+//   border: "1px solid transparent",
+// };
+// `;
 
 const ImagesList = () => {
   const [images, setImages] = useState([]);
@@ -47,14 +74,7 @@ const ImagesList = () => {
     <Container>
       <List>
         {images.map((image) => (
-          <li className="imageslist__item" key={image.id}>
-            <Image
-              onClick={openModal(image)}
-              className="imageslist__image"
-              src={image.download_url}
-              alt={image.download_url}
-            />
-          </li>
+          <ImageCard image={image} openModal={openModal} key={image.id} />
         ))}
       </List>
       <Modal
@@ -63,7 +83,9 @@ const ImagesList = () => {
         imageParams={imageParams}
       />
       {isLoading ? (
-        <p>Loading...</p>
+        <Container>
+          <p>Loading...</p>
+        </Container>
       ) : (
         <Button color="primary" size="large" onClick={handleClick}>
           Show More

@@ -13,8 +13,8 @@ const StyledButton = styled.button`
   cursor: pointer;
 
   :hover {
-    background: #1513a0;
-    border: 1px solid #1513a0;
+    background: #232538;
+    border: 1px solid #232538;
   }
 
   ${(props) => {
@@ -62,8 +62,8 @@ const StyledButton = styled.button`
                     
                 
                     :hover {
-                        background: #1513A0;
-                        border: 1px solid #1513A0;
+                        background: #232538;
+                        border: 1px solid #232538;
                     }
                 
                     :disabled {
