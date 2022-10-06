@@ -5,6 +5,7 @@ import { Header } from "./components";
 import { HeroPage } from "./pages";
 import { GalleryPage } from "./pages";
 import { FavoritePage } from "./pages";
+import { NotFound } from "./pages";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/" element={<HeroPage />} />
         <Route path="/gallery" element={<GalleryPage />} />
         <Route path="/favorite" element={<FavoritePage />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
   );

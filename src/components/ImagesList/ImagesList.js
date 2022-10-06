@@ -1,12 +1,35 @@
 import { useEffect, useState } from "react";
 import { axios } from "../../helpers";
+import styled from "styled-components";
 import { Button } from "../Button";
+import { Modal } from "../Modal";
 import { List } from "../List";
+
+const Container = styled.div`
+  margin: 0 auto;
+  text-align: center;
+`;
+
+const Image = styled.img`
+  cursor: pointer;
+`;
 
 const ImagesList = () => {
   const [images, setImages] = useState([]);
   const [isLoading, setLoading] = useState(true);
   const [page, setPage] = useState(1);
+  const [imageParams, setImageParams] = useState({});
+
+  const [modalActive, setModalActive] = useState(false);
+
+  const openModal = (image) => () => {
+    setImageParams(image);
+    setModalActive(true);
+  };
+
+  const closeModal = () => {
+    setModalActive(false);
+  };
 
   useEffect(() => {
     setLoading(true);
@@ -21,18 +44,24 @@ const ImagesList = () => {
   };
 
   return (
-    <>
+    <Container>
       <List>
-        {images.map(({ id, download_url }) => (
-          <li className="imageslist__item" key={id}>
-            <img
+        {images.map((image) => (
+          <li className="imageslist__item" key={image.id}>
+            <Image
+              onClick={openModal(image)}
               className="imageslist__image"
-              src={download_url}
-              alt={download_url}
+              src={image.download_url}
+              alt={image.download_url}
             />
           </li>
         ))}
       </List>
+      <Modal
+        modalActive={modalActive}
+        closeModal={closeModal}
+        imageParams={imageParams}
+      />
       {isLoading ? (
         <p>Loading...</p>
       ) : (
@@ -40,7 +69,7 @@ const ImagesList = () => {
           Show More
         </Button>
       )}
-    </>
+    </Container>
   );
 };
 

@@ -10,6 +10,7 @@ const Container = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 50px 15px 80px 15px;
+  overflow: hidden;
   position: relative;
 `;
 
