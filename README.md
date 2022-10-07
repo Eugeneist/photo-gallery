@@ -1,4 +1,4 @@
-Додаток "Photo Gallety"
+Додаток "Photo Gallery"
 
 Додаток виконаний з використанням бібліотеки ReactJS.
 Також були використані такі інструменти: AXIOS для запитів до API, React Router для маршрутизації додатку (у демонстраційному білді замінений на Hash Router, який більш дружній із GitHub Pages),  Redux Persist для збереження даних у Local Storage.
