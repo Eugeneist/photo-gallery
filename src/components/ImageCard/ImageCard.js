@@ -9,6 +9,11 @@ import {
 
 const Image = styled.img`
   cursor: pointer;
+  transition: all 0.5s;
+  &:hover {
+    transform: scale(1.2);
+    transition: all 0.5s;
+  }
 `;
 
 const CardContainer = styled.li`
@@ -19,6 +24,8 @@ const CardContainer = styled.li`
   flex-direction: column;
   margin: 0;
   padding: 0;
+  overflow: hidden;
+  overflow-x: hidden;
 `;
 
 const FavoriteBox = styled.div`

@@ -8,6 +8,7 @@ const Container = styled.div`
   padding: 30px 15px;
   margin: 0 auto;
   text-align: center;
+  height: 100vh;
 `;
 
 const Typography = styled.p`

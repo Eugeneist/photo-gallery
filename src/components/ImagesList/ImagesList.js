@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { axios } from "../../helpers";
 import styled from "styled-components";
-import { Button } from "../Button";
 import { Modal } from "../Modal";
 import { List } from "../List";
 import { ImageCard } from "../ImageCard";
+import { Pagination } from "../Pagination";
 
 const Container = styled.div`
   margin: 0 auto;
@@ -22,6 +22,7 @@ const ImagesList = () => {
   const [images, setImages] = useState([]);
   const [isLoading, setLoading] = useState(true);
   const [page, setPage] = useState(1);
+  const [imgPerPage, setImgPerPage] = useState(10);
   const [imageParams, setImageParams] = useState({});
 
   const [modalActive, setModalActive] = useState(false);
@@ -35,17 +36,23 @@ const ImagesList = () => {
     setModalActive(false);
   };
 
+  const incrementPerPage = () => {
+    setImgPerPage((imgPerPage) => imgPerPage + 1);
+  };
+
+  const decrementPerPage = () => {
+    setImgPerPage((imgPerPage) => imgPerPage - 1);
+  };
+
   useEffect(() => {
     setLoading(true);
-    axios.get(`/list`, { params: { page, limit: 10 } }).then((data) => {
-      setImages((prevImages) => [...prevImages, ...data]);
-      setLoading(false);
-    });
-  }, [page]);
-
-  const handleClick = () => {
-    setPage((page) => page + 1);
-  };
+    axios
+      .get(`/list`, { params: { page, limit: `${imgPerPage}` } })
+      .then((data) => {
+        setImages(() => [...data]);
+        setLoading(false);
+      });
+  }, [page, imgPerPage]);
 
   return (
     <Container>
@@ -64,9 +71,12 @@ const ImagesList = () => {
           <Typography>Loading...</Typography>
         </Container>
       ) : (
-        <Button color="primary" size="large" onClick={handleClick}>
-          Show More
-        </Button>
+        <Pagination
+          imgPerPage={imgPerPage}
+          setPage={setPage}
+          incrementPerPage={incrementPerPage}
+          decrementPerPage={decrementPerPage}
+        />
       )}
     </Container>
   );

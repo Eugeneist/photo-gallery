@@ -6,6 +6,7 @@ import { HeroPage } from "./pages";
 import { GalleryPage } from "./pages";
 import { FavoritePage } from "./pages";
 import { NotFound } from "./pages";
+import { Footer } from "./components";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/favorite" element={<FavoritePage />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
+      <Footer />
     </div>
   );
 }
