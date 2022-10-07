@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { useSelector } from "react-redux";
 
 const Container = styled.div`
   background-color: #2b2d42;
@@ -39,8 +40,7 @@ const MenuList = styled.ul`
 `;
 
 const MenuItem = styled.li`
-  margin: 0 0 20px 0;
-  margin: 0;
+  margin: 0 10px 5px 0;
   padding: 0;
 `;
 
@@ -57,6 +57,8 @@ const MenuLink = styled.a`
 `;
 
 const Header = () => {
+  const favorite = useSelector((state) => state.favoriteReducer);
+
   return (
     <Container>
       <HeaderInner>
@@ -72,7 +74,7 @@ const Header = () => {
               <MenuLink href="/gallery">Gallery</MenuLink>
             </MenuItem>
             <MenuItem>
-              <MenuLink href="/favorite">Favorite</MenuLink>
+              <MenuLink href="/favorite">Favorite ({favorite.length})</MenuLink>
             </MenuItem>
           </MenuList>
         </Menu>

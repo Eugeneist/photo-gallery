@@ -34,7 +34,7 @@ const FavoritePage = () => {
           {state.map((image) => (
             <ImageCard
               image={image}
-              openModal={() => console.log("click")}
+              openModal={() => console.log("")}
               key={image.id}
             />
           ))}

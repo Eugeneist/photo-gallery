@@ -19,6 +19,7 @@ const ModalContainer = styled.div`
             justify-content: center;
             background-color: rgba(0, 0, 0, 0.5);
             position: fixed;
+            z-index: 9999;
             top: 0;
             left: 0;
             transition: all 0.3s ease-in-out;
@@ -34,6 +35,7 @@ const ModalContainer = styled.div`
             justify-content: center;
             background-color: transparent;
             position: fixed;
+            z-index: 9999;
             top: 0;
             left: 0;
             transition: all 0.3s ease-in-out;
@@ -107,23 +109,13 @@ const Modal = ({ modalActive, closeModal, imageParams }) => {
         <Image src={imageParams.download_url} />
         <Typography>Author: {imageParams.author}</Typography>
         <ButtomBox>
-          {favoriteProduct ? (
-            <Button
-              color="primary"
-              size="medium"
-              onClick={() => addFavoriteProduct(imageParams)}
-            >
-              Remove
-            </Button>
-          ) : (
-            <Button
-              color="primary"
-              size="medium"
-              onClick={() => addFavoriteProduct(imageParams)}
-            >
-              Add to Favorites
-            </Button>
-          )}
+          <Button
+            color="primary"
+            size="medium"
+            onClick={() => addFavoriteProduct(imageParams)}
+          >
+            {favoriteProduct ? "Remove" : "Add to Favorites"}
+          </Button>
 
           <Button color="primary" size="medium" onClick={() => closeModal()}>
             Close

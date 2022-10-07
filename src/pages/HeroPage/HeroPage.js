@@ -40,6 +40,7 @@ const Button = styled.a`
   border: 1px solid #2b2d42;
   background: #2b2d42;
   text-decoration: none;
+  text-transform: uppercase;
   color: #fff;
   &:hover {
     background: #232538;
