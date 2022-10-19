@@ -16,8 +16,11 @@ const Image = styled.img`
   }
 `;
 
-const CardContainer = styled.li`
+const ImageContainer = styled.div`
   position: relative;
+`;
+
+const CardContainer = styled.li`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -35,7 +38,7 @@ const FavoriteBox = styled.div`
   top: 7px;
   right: 55px;
   color: #fca311;
-  zindex: 9;
+  z-index: 9;
   border: 1px solid transparent;
 `;
 
@@ -95,27 +98,29 @@ const ImageCard = ({ openModal, image }) => {
   const favorite = useSelector((state) => state.favoriteReducer);
 
   useEffect(() => {
-    if (favorite.includes(image)) {
+    if (favorite.find((fav) => fav.id === image.id)) {
       setFavoriteProduct(true);
     }
   }, [favorite, image]);
 
   return (
     <CardContainer className="imageslist__item" key={image.id}>
-      <Image
-        onClick={openModal(image)}
-        className="imageslist__image"
-        src={image.download_url}
-        alt={image.download_url}
-      />
-      <FavoriteBox>
-        <FavoriteButton
-          className={
-            favoriteProduct ? "favorite-button active" : "favorite-button"
-          }
-          onClick={() => addFavoriteProduct(image)}
+      <ImageContainer>
+        <Image
+          onClick={openModal(image)}
+          className="imageslist__image"
+          src={image.download_url}
+          alt={image.download_url}
         />
-      </FavoriteBox>
+        <FavoriteBox>
+          <FavoriteButton
+            className={
+              favoriteProduct ? "favorite-button active" : "favorite-button"
+            }
+            onClick={() => addFavoriteProduct(image)}
+          />
+        </FavoriteBox>
+      </ImageContainer>
     </CardContainer>
   );
 };
