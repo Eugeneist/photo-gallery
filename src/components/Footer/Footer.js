@@ -24,10 +24,12 @@ const Typography = styled.p`
 `;
 
 const Footer = () => {
+  let currentYear = new Date().getFullYear();
+  
   return (
     <Container>
       <FooterInner>
-        <Typography>Copyright © 2022, Yevhen Rudofylov</Typography>
+        <Typography>Copyright © {currentYear}, Yevhen Rudofylov</Typography>
       </FooterInner>
     </Container>
   );
